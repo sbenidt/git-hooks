@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# The following git hook runs a linter
+# To automatically run the linter before each push set hooks.runlinteronpush to true
+
+runlinter=$(git config --bool hooks.runlinteronpush)
+
+if [ "$runlinter" = "true" ]
+then	
+	cat << EOF
+Running pylint...
+Commit will not go through if pylint exits with non-zero status
+To disable the linter, set hooks.runlinteronpush to false
+EOF
+	pylint *.py
+fi
