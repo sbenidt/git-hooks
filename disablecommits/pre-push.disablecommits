@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# This hook allows pushes to remotes to be disabled in your git repository
+# Set hooks.disablepushes in your git config file to true to disable pushes
+
+
+disablepushes=$(git config --bool hooks.disablepushes)
+
+if [ "$disablepushes" = "true" ]
+then
+	echo All pushes to remotes are currently disabled. To reallow pushes set hooks.disablepushes to false
+	exit 1
+fi

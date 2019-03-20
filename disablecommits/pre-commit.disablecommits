@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# This hook allows commits to be disabled in your git repository
+# Set hooks.disablecommits in your git config file to true to disable commits
+
+
+disablecommits=$(git config --bool hooks.disablecommits)
+
+if [ "$disablecommits" = "true" ]
+then
+	echo All commits are currently disabled. To reallow commits set hooks.disablecommits to false
+	exit 1
+fi
