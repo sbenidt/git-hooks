@@ -10,7 +10,6 @@ from a single pre-commit executable.
 i.e. a text file structured as follows
 
 ```
-./pre-commit.disablecommits
 ./pre-commit.rununittests
 ./pre-commit.runlinter
 ```
