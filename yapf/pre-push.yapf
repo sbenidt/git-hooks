@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# This hook auto-formats your python code with yapf
+# To turn turn this hook off, set hooks.yapf to false
+
+yapf=$(git config --bool hooks.yapf)
+
+if [ "$yapf" = "true" ]
+then
+	cat << EOF
+yapf is set to run automatically convert your python code for each push
+To turn to feature off, set hooks.yapf to false
+EOF
+	yapf -i *.py
+	git add *.py
+fi
+
+
